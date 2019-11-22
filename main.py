@@ -9,7 +9,7 @@ n1 = 50
 n2 = 0
 beta = 0.1
 Nc = beta * N
-p
+p = 20
 
 size = 500
 fileMax = open("valuesMax.txt","w")
@@ -45,9 +45,7 @@ for i in range(max_it):
     # hipermutação, em que a taxa de mutação é inversamente
     # proporcional à afinidade do anticorpo. Uma população de
     # anticorpos maduros é gerada (C*);
-
-    # @TODO CRIAR AQUI A HIPERMUTAÇÃO
-    currentPopulation = mutation.hiperMutate(currentPopulation, size, mutationRate)
+    currentPopulation = mutation.hiperMutate(currentPopulation, size, max, p)
 
     
     # 5. Re-selecione os melhores indivíduos de C* para compor o

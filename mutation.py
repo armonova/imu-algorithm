@@ -1,6 +1,7 @@
 import random
+import math
 
-def hiperMutate(population, size, rate):
+def mutate(population, size, rate):
     for i in range(size):
         for j in range(2):
             rand = round(random.uniform(0, 1), 4)
@@ -9,11 +10,13 @@ def hiperMutate(population, size, rate):
     
     return population
 
-def mutate(population, size, rate):
+def hiperMutate(population, size, Dmax, p):
     for i in range(size):
+        Dnew = population[i][2]/Dmax
+        alpha = math.exp((-p) * Dnew)
         for j in range(2):
             rand = round(random.uniform(0, 1), 4)
-            if(rand <= rate):
+            if(rand <= 0.2):
                 population[i][j] = makeMutation(population[i][j], i, j)
     
     return population
