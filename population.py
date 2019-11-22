@@ -9,3 +9,19 @@ def createPopulation(size):
         population[i][1] = round(random.uniform(0, 10), 4)
     # print(population)
     return population
+
+
+def clonePopulation(population, size, clonesCount):
+      selectedFathers = []
+      for i in range(size):
+            for j in range(clonesCount):
+                  selectedFathers.append(population[i])
+
+      return selectedFathers
+
+size = 5
+pop = createPopulation(size)
+print(pop)
+print()
+newPop = clonePopulation(pop, size, 2)
+print(newPop)

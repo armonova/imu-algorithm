@@ -1,4 +1,4 @@
-import random, population
+import random, population, maxmin, mutation
 
 def rouletteSelection(population, size):
       randomNumbers = getRandomNumbers(population, size)
@@ -30,4 +30,33 @@ def getSelectedFathers(population, randomNumbers, size):
                         break
       
       return selectedFathers
-# print(getRandomNumbers(population.createPopulation(10), 10))
+
+def getSelectedFromCloneFathers(population, size, clonesCount):
+      selectedFathers = []
+      i = 0
+      while(i < size):
+            max = population[i][2]
+            selected = population[i]
+            for j in range(clonesCount):
+                  if (population[i + j][2] > max):
+                        max = population[i + j][2]
+                        selected = population[i + j]
+
+            i = i + clonesCount
+            selectedFathers.append(selected)
+
+      return selectedFathers
+
+# size = 5
+# pop = population.createPopulation(size)
+# print("## CURRENT POPULATION ##")
+# print(pop)
+# print()
+
+# newPop = population.clonePopulation(pop, size, 2)
+# print("## CLONED POPULATION ##")
+# print(newPop)
+
+# newPop = getSelectedCloneFathers(newPop, size * 2, 2)
+# print("## SELECTED POPULATION ##")
+# print(newPop)
