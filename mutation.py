@@ -10,14 +10,14 @@ def mutate(population, size, rate):
     
     return population
 
-def hiperMutate(population, size, Dmax, p):
-    for i in range(size):
-        Dnew = population[i][2]/Dmax
+def hiperMutate(population, initial, clonesCount, Dmax, p):
+    for i in range(clonesCount):
+        Dnew = population[i + initial][2]/Dmax
         alpha = math.exp((-p) * Dnew)
         for j in range(2):
             rand = round(random.uniform(0, 1), 4)
             if(rand <= 0.2):
-                population[i][j] = makeMutation(population[i][j], i, j)
+                population[i + initial][j] = makeMutation(population[i + initial][j], i, j)
     
     return population
 

@@ -56,7 +56,17 @@ for i in range(max_it):
     # hipermutação, em que a taxa de mutação é inversamente
     # proporcional à afinidade do anticorpo. Uma população de
     # anticorpos maduros é gerada (C*);
-    clonePopulation = mutation.hiperMutate(clonePopulation, size * clonesCount, max, p)
+
+    while(i < size):
+        max = clonePopulation[i][2]
+        selected = clonePopulation[i]
+        for j in range(clonesCount):
+            if (clonePopulation[i + j][2] > max):
+                max = clonePopulation[i + j][2]
+                selected = clonePopulation[i + j]
+        clonePopulation = mutation.hiperMutate(clonePopulation, i, clonesCount, max, p)
+        i = i + clonesCount
+
 
     
     # 5. Re-selecione os melhores indivíduos de C* para compor o
